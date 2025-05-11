@@ -178,7 +178,7 @@
   }
 
   .demoCard {
-    padding: 30px 20px;
+    padding: 25px 25px;
     overflow: hidden;
     max-height: 100%;
   }
@@ -192,7 +192,7 @@
   }
 
   .helpIcon {
-    bottom: 12px;
-    left: 12px;
+    bottom: 0px;
+    left: 0px;
   }
 } 

@@ -98,7 +98,6 @@
 /* Remove focus outline for non-keyboard focus */
 .button:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: none;
 }
 
 /* Disabled state */
