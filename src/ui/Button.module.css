@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   white-space: nowrap;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.9);
@@ -25,9 +25,7 @@
   justify-content: center;
   gap: 8px;
   z-index: 1;
-  font-size: 1rem;
   font-family: "Inter", sans-serif;
-  font-weight: 450;
 }
 
 /* Variants */
@@ -60,7 +58,8 @@
 
 .large {
   padding:22px 32px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 450;
 }
 
 .fullWidth {
@@ -70,6 +69,7 @@
 /* Hover states */
 .button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #000000;
 }
 
 /* Active states */

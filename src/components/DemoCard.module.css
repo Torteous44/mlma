@@ -65,24 +65,24 @@
 
 .demoTitle {
   font-family: "Inter", sans-serif;
-  font-size: 2rem;
+  font-size: 2.1rem;
   font-weight: 400;
-  color: #333;
+  color: #0A0A0A;
   margin-bottom: 0;
   letter-spacing: -0.03em;
   text-align: left;
   position: relative;
   align-self: flex-start;
-  margin-top: 0;
+  margin-top: 0px;
   width: 100%;
 }
 
 .guideText {
-  font-size: 0.9rem;
-  color: #333;
+  font-size: 1rem;
+  color: #28333b;
   font-weight: 400;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 15px;
   font-family: "Inter", sans-serif;
   letter-spacing: -0.03em;
 }
@@ -188,7 +188,7 @@
   }
 
   .bottomContent {
-    padding-top: 20px;
+    padding-top: 80px;
   }
 
   .helpIcon {
