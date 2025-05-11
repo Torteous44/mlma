@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styles from "../pages/Landing.module.css";
+import styles from "./ScrollableContent.module.css";
 import { motion, useScroll, useSpring } from "framer-motion";
 
 const ScrollableContent: React.FC = () => {
@@ -10,6 +10,7 @@ const ScrollableContent: React.FC = () => {
     container: scrollRef,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // Add spring physics to the scroll for a smoother, slightly sticky feel
   const smoothScroll = useSpring(scrollYProgress, {
     stiffness: 55, // Lower stiffness for more "stickiness"

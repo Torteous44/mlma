@@ -1,0 +1,198 @@
+.demoContainer {
+  width: 50%;
+  padding: 10vh 0 10vh 10vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.demoCard {
+  height: 100%;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  background-color: #c7ced1;
+  background-image: radial-gradient(circle at 10px 10px, rgba(0, 0, 0, 0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+.demoCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.demoCard::after {
+  display: none;
+}
+
+.topContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.mainContent {
+  flex: 0 0 auto;
+}
+
+.bottomContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+
+}
+
+.demoTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 0;
+  letter-spacing: -0.03em;
+  text-align: left;
+  position: relative;
+  align-self: flex-start;
+  margin-top: 0;
+  width: 100%;
+}
+
+.guideText {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.optionItem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  max-width: 300px;
+  margin: 0;
+}
+
+.optionOr {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0;
+}
+
+.helpIcon {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #c3e7fb;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 2;
+  transform: translateZ(0);
+  border: 1px solid black;
+  font-family: "Inter", sans-serif;
+}
+
+.helpIcon:hover {
+  rotate: 180deg;
+}
+
+@media (max-width: 1150px) {
+  .optionsContainer {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 0;
+  }
+  
+  .optionItem {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .optionOr {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .demoContainer {
+    width: 100%;
+    height: auto;
+    padding: 5vh 5vw;
+    position: relative;
+    min-height: 400px;
+    order: 1;
+  }
+
+  .demoCard {
+    padding: 30px 20px;
+    overflow: hidden;
+    max-height: 100%;
+  }
+
+  .topContent {
+    padding-bottom: 20px;
+  }
+
+  .bottomContent {
+    padding-top: 20px;
+  }
+
+  .helpIcon {
+    bottom: 12px;
+    left: 12px;
+  }
+} 

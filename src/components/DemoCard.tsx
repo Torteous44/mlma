@@ -1,16 +1,18 @@
 import React from "react";
-import styles from "../pages/Landing.module.css";
+import styles from "./DemoCard.module.css";
 import Button from "../ui/Button";
 
 const DemoCard: React.FC = () => {
   return (
     <div className={styles.demoContainer}>
       <div className={styles.demoCard}>
-        <div className={styles.cardContent}>
+        <div className={styles.topContent}>
           <h2 className={styles.demoTitle}>Begin Your Mortgage Assessment</h2>
           <p className={styles.guideText}>
             Choose how you would like to proceed
           </p>
+        </div>
+        <div className={styles.mainContent}>
           <div className={styles.optionsContainer}>
             <div className={styles.optionItem}>
               <Button variant="primary" fullWidth size="large">
@@ -25,7 +27,9 @@ const DemoCard: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className={styles.helpIcon}>?</div>
+        <div className={styles.bottomContent}>
+          <div className={styles.helpIcon}>?</div>
+        </div>
       </div>
     </div>
   );

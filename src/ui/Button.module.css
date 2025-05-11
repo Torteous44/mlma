@@ -4,12 +4,11 @@
   justify-content: center;
   align-items: center;
   font-family: "Inter", sans-serif;
-  font-weight: 600;
   letter-spacing: -0.03em;
   white-space: nowrap;
   cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.9);
-  border-radius: 12px;
+  border-radius: 100px;
   transition: all 0.2s ease;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
@@ -26,9 +25,9 @@
   justify-content: center;
   gap: 8px;
   z-index: 1;
-  font-size: 1.115rem;
+  font-size: 1rem;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 450;
 }
 
 /* Variants */
@@ -60,12 +59,12 @@
 }
 
 .large {
-  padding:18px 32px;
+  padding:22px 32px;
   font-size: 1.1rem;
 }
 
 .fullWidth {
-  width: 100%;
+  width: 90%;
 }
 
 /* Hover states */

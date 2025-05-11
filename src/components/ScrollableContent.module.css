@@ -1,0 +1,76 @@
+.scrollContainer {
+  width: 50%;
+  padding: 10vh 10vh 10vh 10vh;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.scrollContent {
+  padding-right: 20px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.scrollContent h2 {
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin-bottom: 0rem;
+}
+
+.scrollContent p {
+  margin-bottom: 0.2rem;
+  line-height: 1.5;
+  padding: 4px 0;
+  transition: background-color 0.2s ease;
+  letter-spacing: -0.01em;
+  font-size: 0.75rem;
+  font-weight: 200;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  color: #333;
+}
+
+.sampleText {
+  line-height: 1.4;
+  padding: 6px 0;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.highlight {
+  color: #333;
+  background-color: #c3e7fb;
+}
+
+@media (max-width: 768px) {
+  .scrollContainer {
+    width: 100%;
+    height: auto;
+    padding: 5vh 5vw;
+    order: 2;
+    height: auto;
+    max-height: none;
+  }
+} 
