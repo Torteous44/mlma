@@ -185,10 +185,14 @@
     overflow: hidden;
     max-height: 100%;
   }
+  .optionsContainer {
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
 
-  .topContent {
-    padding-bottom: 30px;
   }
+  .topContent {
+    padding-bottom: 10px;  }
 
   .bottomContent {
     padding-top: 80px;
