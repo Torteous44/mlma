@@ -1,0 +1,281 @@
+.container {
+  background-color: #f3fafe;
+  min-height: 100vh;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+}
+
+.demoContainer {
+  width: 50%;
+  padding: 10vh 0 10vh 10vh;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.demoCard {
+  height: 100%;
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c7ced1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+.highlight {
+  color: #333;
+  background-color: #c3e7fb;
+}
+/* Using the pseudo-element technique for clean borders */
+.demoCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  pointer-events: none;
+  /* Hardware acceleration and anti-aliasing */
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Removing the after pseudo-element as we're using before */
+.demoCard::after {
+  display: none;
+}
+
+.scrollContainer {
+  width: 50%;
+  padding: 10vh 10vh 10vh 10vh;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  
+  /* Enhanced scroll behavior */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Webkit scrollbar styling for Chrome, Safari, etc. */
+.scrollContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.scrollContent {
+  padding-right: 20px;
+  margin-right: 10px;
+  margin-left: 20px;
+
+}
+
+.scrollContent h2 {
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  margin-bottom: 0rem;
+}
+
+.scrollContent p {
+  margin-bottom: 0.2rem;
+  line-height: 1.5;
+  padding: 4px 0;
+  transition: background-color 0.2s ease;
+  letter-spacing: -0.01em;
+  font-size: 0.75rem;
+  font-weight: 200;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  color: #333;
+}
+
+.sampleText {
+  line-height: 1.4;
+  padding: 6px 0;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.helpIcon {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #c3e7fb;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  z-index: 2;
+  transform: translateZ(0);
+  border: 1px solid black;
+  font-family: "Inter", sans-serif;
+}
+
+.helpIcon:hover {
+  rotate: 180deg;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.demoTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 0;
+  letter-spacing: -0.03em;
+  text-align: left;
+  position: relative;
+  align-self: flex-start;
+  margin-top: 0;
+  width: 100%;
+}
+
+.guideText {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  gap: 30px;
+  margin: auto;
+  align-self: center; 
+  padding-bottom: 50px;
+}
+
+.optionItem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  max-width: 300px;
+  margin: 0;
+}
+
+.optionOr {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0;
+}
+
+/* Options layout switch at 1150px */
+@media (max-width: 1150px) {
+  .optionsContainer {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+    padding: 0;
+    margin-top: 70px;
+  }
+  
+  .optionItem {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .optionOr {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+/* Container layout switch at 768px */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .demoContainer, .scrollContainer {
+    width: 100%;
+    height: auto;
+    padding: 5vh 5vw;
+  }
+  
+  .demoContainer {
+    position: relative;
+    height: auto;
+    min-height: 400px;
+    order: 1;
+  }
+  .guideText {
+    margin-bottom: 0px;
+  }
+  .scrollContainer {
+    order: 2;
+    height: auto;
+    max-height: none;
+  }
+
+  .demoCard {
+    overflow: hidden;
+    max-height: 100%;
+  }
+
+  .cardContent {
+    padding: 30px 20px;
+  }
+  .optionsContainer {
+    padding-bottom: 80px;
+  }
+} 
