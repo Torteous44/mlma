@@ -5,7 +5,7 @@
   gap: 4px;
   background: none;
   border: none;
-  padding: 8px 18px;
+  padding: 6px 8px;
   font-size: 0.9rem;
   font-weight: 500;
   color: #333;
@@ -16,10 +16,11 @@
   z-index: 10;
   border: 1px solid #28333b;
   letter-spacing: -0.03vh;
+  background-color: #f5f5f5;
 }
 
 .backButton:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f2f2f2;
 }
 
 .backButton .material-symbols-outlined {
@@ -32,6 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 2px;
 }
 
 .chevron {
@@ -46,4 +48,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 2px;
 } 

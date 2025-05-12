@@ -123,7 +123,6 @@ const DemoCard: React.FC = () => {
       <div className={styles.demoCard}>
         <div className={styles.topContent}>
           <div className={styles.topHeader}>
-            <h2 className={styles.demoTitle}>{title}</h2>
             {currentScreen !== "buttons" && (
               <BackButton
                 onClick={() => handleTransition("buttons")}
@@ -131,6 +130,7 @@ const DemoCard: React.FC = () => {
                 label=""
               />
             )}
+            <h2 className={styles.demoTitle}>{title}</h2>
           </div>
           <p className={styles.guideText}>{guideText}</p>
         </div>
