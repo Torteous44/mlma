@@ -17,6 +17,7 @@
   border: 1px solid #28333b;
   letter-spacing: -0.03vh;
   background-color: #f5f5f5;
+    margin-bottom: 0.5px;
 }
 
 .backButton:hover {

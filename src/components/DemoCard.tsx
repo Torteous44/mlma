@@ -97,7 +97,7 @@ const DemoCard: React.FC = () => {
     setTimeout(() => {
       setCurrentScreen(nextScreen);
       setAnimation("fadeIn");
-    }, 100);
+    }, 50);
   };
 
   const renderScreen = () => {

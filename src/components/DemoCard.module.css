@@ -225,17 +225,17 @@
 /* Screen transition animations */
 .screenContainer {
   width: 100%;
-  transition: opacity 10ms ease-in-out;
+  transition: opacity 5ms ease-in-out;
   opacity: 1;
   position: relative;
 }
 
 .fadeIn {
-  animation: fadeInAnimation 80ms ease-in-out forwards;
+  animation: fadeInAnimation 40ms ease-in-out forwards;
 }
 
 .fadeOut {
-  animation: fadeOutAnimation 80ms ease-in-out forwards;
+  animation: fadeOutAnimation 40ms ease-in-out forwards;
   pointer-events: none;
 }
 
