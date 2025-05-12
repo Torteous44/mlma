@@ -88,15 +88,6 @@
   gap: 15px;
 }
 
-.topBackButton {
-  align-self: center;
-  margin-left: 0;
-  padding: 6px 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5px;
-}
 
 .guideText {
   font-size: 1rem;
@@ -270,16 +261,6 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.backButton {
-  align-self: flex-start;
-  margin-top: 10px;
-}
-
-/* Specific styling for back button on upload page */
-.uploadContainer .backButton {
-  margin-left: 20px;
 }
 
 @media (max-width: 768px) {
