@@ -69,9 +69,6 @@ const DemoCard: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<
     "buttons" | "upload" | "manual"
   >("buttons");
-  const [animation, setAnimation] = useState<"fadeIn" | "fadeOut" | "none">(
-    "none"
-  );
 
   const screenContent: Record<"buttons" | "upload" | "manual", ScreenContent> =
     {
@@ -90,14 +87,7 @@ const DemoCard: React.FC = () => {
     };
 
   const handleTransition = (nextScreen: "buttons" | "upload" | "manual") => {
-    // First fade out the current screen
-    setAnimation("fadeOut");
-
-    // After fadeOut animation completes, change the screen and fade in
-    setTimeout(() => {
-      setCurrentScreen(nextScreen);
-      setAnimation("fadeIn");
-    }, 50);
+    setCurrentScreen(nextScreen);
   };
 
   const renderScreen = () => {
@@ -135,9 +125,7 @@ const DemoCard: React.FC = () => {
           <p className={styles.guideText}>{guideText}</p>
         </div>
         <div className={styles.mainContent}>
-          <div className={`${styles.screenContainer} ${styles[animation]}`}>
-            {renderScreen()}
-          </div>
+          <div className={styles.screenContainer}>{renderScreen()}</div>
         </div>
         <div className={styles.bottomContent}>
           <div className={styles.helpIcon}>?</div>
