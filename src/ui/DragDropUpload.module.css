@@ -1,0 +1,104 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 140px;
+  border: 1px solid #28333b;
+  border-radius: 40px;
+  overflow: hidden;
+  background-color: #f5f5f500;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.dropZone {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 22px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.uploadIcon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  background-color: #c3e7fb;
+  border-radius: 22px;
+  border: 1px solid #28333b;
+}
+
+.dragging .uploadIcon {
+  background-color: rgba(0, 102, 204, 0.15);
+  transform: scale(0.95);
+}
+
+.textContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.primaryText {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 5px 0;
+  color: #333;
+  letter-spacing: -0.02em;
+}
+
+.secondaryText {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.fileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.errorText {
+  color: #d32f2f;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .dropZone {
+    width: 100%;
+    height: 100px;
+    border-right: none;
+    border-bottom: 18px solid #0066cc;
+  }
+  
+  .textContainer {
+    padding: 15px;
+    text-align: center;
+  }
+} 

@@ -37,11 +37,13 @@
 .primary {
   background-color: #c3e7fb;
   color: #333;
+  border: 1px solid #333;
 }
 
 .secondary {
   background-color: #f3fafe;
   color: #333;
+  border: 1px solid #333;
 }
 
 .tertiary {
@@ -73,8 +75,9 @@
 
 /* Hover states */
 .button:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.2);
   color: #000000;
+  border: 1px solid #000000;
 }
 
 /* Active states */
