@@ -57,16 +57,17 @@
   padding: 0 20px;
 }
 
+/* Default text sizes for screens below 1150px */
 .primaryText {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin: 0 0 5px 0;
+  margin: 0 0 3px 0;
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
 }
 
 .secondaryText {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--color-text-secondary);
   margin: 0;
   letter-spacing: -0.02em;
@@ -86,21 +87,169 @@
   margin-top: 8px;
 }
 
+/* Mobile Container Styles */
+.mobileContainer {
+  flex-direction: column;
+  height: auto;
+  max-width: 100%;
+  padding: 0;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.mobileUploadArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.mobileTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.mobileTextContainer .primaryText,
+.mobileTextContainer .secondaryText {
+  text-align: center;
+  width: 100%;
+}
+
+/* Large screens - increase text size */
+@media (min-width: 1150px) {
+  .primaryText {
+    font-size: 1.25rem;
+    margin: 0 0 5px 0;
+  }
+  
+  .secondaryText {
+    font-size: 0.9rem;
+  }
+}
+
+/* Medium screens - reduce text size and spacing */
+@media (max-width: 1149px) and (min-width: 961px) {
+  .primaryText {
+    font-size: 1rem;
+    margin: 0 0 3px 0;
+  }
+  
+  .secondaryText {
+    font-size: 0.8rem;
+  }
+  
+  .textContainer {
+    padding: 0 15px;
+  }
+  
+  .dropZone {
+    width: 120px;
+    height: 120px;
+    padding: 18px;
+  }
+}
+
+/* Smaller medium screens - further reduce size and spacing */
+@media (max-width: 960px) and (min-width: 769px) {
+  .primaryText {
+    font-size: 0.9rem;
+    margin: 0 0 2px 0;
+  }
+  
+  .secondaryText {
+    font-size: 0.75rem;
+  }
+  
+  .textContainer {
+    padding: 0 12px;
+  }
+  
+  .dropZone {
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+  }
+  
+  .container {
+    height: 120px;
+  }
+}
+
+/* Enhanced Mobile Styles */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     height: auto;
-  }
-  
-  .dropZone {
-    width: 100%;
-    height: 100px;
-    border-right: none;
-    border-bottom: 18px solid var(--color-primary-dark);
-  }
-  
-  .textContainer {
+    max-width: 95%;
     padding: 15px;
+    border-radius: 25px;
     text-align: center;
+  }
+  
+  .mobileContainer {
+    padding: 0;
+    max-width: 100%;
+    border-radius: 20px;
+  }
+  
+  .mobileUploadArea .uploadIcon {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+  }
+  
+  .mobileUploadArea .primaryText {
+    font-size: 1.1rem;
+    margin-top: 12px;
+    text-align: center;
+  }
+  
+  .mobileUploadArea .secondaryText {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  .errorText {
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .container {
+    border-radius: 20px;
+    padding: 12px;
+  }
+  
+  .mobileContainer {
+    padding: 0;
+  }
+  
+  .mobileUploadArea .uploadIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+  }
+  
+  .mobileUploadArea .primaryText {
+    font-size: 1rem;
+  }
+  
+  .mobileUploadArea .secondaryText {
+    font-size: 0.75rem;
   }
 } 
