@@ -27,7 +27,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 22px;
+  padding: 16px;
   box-sizing: border-box;
   transition: all 0.2s ease;
 }
@@ -40,7 +40,7 @@
   align-items: center;
   color: var(--color-border-dark);
   background-color: var(--color-primary);
-  border-radius: 22px;
+  border-radius: 26px;
   border: 1px solid var(--color-border);
 }
 

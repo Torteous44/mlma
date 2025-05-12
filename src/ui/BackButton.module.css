@@ -9,7 +9,7 @@
   border: none;
   padding: 6px 10px;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 300;
   color: var(--color-text-primary);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -60,7 +60,7 @@
 .backButton:focus:not(:focus-visible) {
   outline: none;
 }
-
+/* 
 .backButton .material-symbols-outlined {
   font-size: 20px;
   font-variation-settings:
@@ -72,14 +72,9 @@
   align-items: center;
   justify-content: center;
   margin-right: 2px;
-}
+} */
 
 .chevron {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 250,
-    'GRAD' 0,
-    'opsz' 24;
   position: relative;
   width: 18px;
   height: 18px;
@@ -87,6 +82,7 @@
   align-items: center;
   justify-content: center;
   margin-right: 2px;
+  stroke-width: 1.5;
 }
 
 /* Mobile-specific adjustments */
