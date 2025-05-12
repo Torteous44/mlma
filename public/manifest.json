@@ -8,8 +8,8 @@
       "type": "image/svg+xml"
     }
   ],
-  "start_url": ".",
+  "start_url": "https://mlma.vercel.app",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#c3e7fb",
+  "background_color": "#c3e7fb"
 }

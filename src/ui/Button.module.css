@@ -1,3 +1,5 @@
+@import '../styles.css';
+
 .button {
   position: relative;
   display: inline-flex;
@@ -7,7 +9,7 @@
   letter-spacing: -0.035em;
   white-space: nowrap;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--color-border-darkest);
   border-radius: 100px;
   transition: all 0.2s ease;
   overflow: hidden;
@@ -35,21 +37,21 @@
 
 /* Variants */
 .primary {
-  background-color: #c3e7fb;
-  color: #333;
-  border: 1px solid #333;
+  background-color: var(--color-primary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
 }
 
 .secondary {
-  background-color: #f3fafe;
-  color: #333;
-  border: 1px solid #333;
+  background-color: var(--color-primary-light);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary);
 }
 
 .tertiary {
   background-color: transparent;
-  color: #333;
-  border-color: rgba(0, 0, 0, 0.6);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-light);
 }
 
 /* Sizes */
@@ -75,9 +77,9 @@
 
 /* Hover states */
 .button:hover {
-  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.2);
-  color: #000000;
-  border: 1px solid #000000;
+  box-shadow: 0 1.5px 3px var(--color-shadow);
+  color: var(--color-border-dark);
+  border: 1px solid var(--color-border-dark);
 }
 
 /* Active states */
@@ -94,8 +96,8 @@
 
 .button:focus-visible {
   outline: none;
-  border-color: #000;
-  box-shadow: 0 0 0 3px rgba(71, 177, 235, 0.4);
+  border-color: var(--color-border-dark);
+  box-shadow: 0 0 0 3px var(--color-focus-shadow);
 }
 
 /* Remove focus outline for non-keyboard focus */
@@ -107,7 +109,7 @@
 .button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  border-color: rgba(0, 0, 0, 0.3);
+  border-color: var(--color-border-lighter);
 }
 
 /* Smooth scroll behavior for anchor buttons */

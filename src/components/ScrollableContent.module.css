@@ -1,3 +1,5 @@
+@import '../styles.css';
+
 * {
   font-family: "Inter", sans-serif;
 }
@@ -11,7 +13,7 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-color: var(--color-border-lightest) transparent;
 }
 
 .scrollContainer::-webkit-scrollbar {
@@ -23,7 +25,7 @@
 }
 
 .scrollContainer::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--color-border-lightest);
   border-radius: 20px;
 }
 
@@ -38,7 +40,7 @@
   letter-spacing: -0.04em;
   font-weight: 400;
   margin-bottom: 0.5rem;
-  color: #01080c;
+  color: var(--color-text-dark);
   margin-top: 5px;
 }
 
@@ -53,7 +55,7 @@
   padding-bottom: 15px;
   margin-bottom: 10px;
   margin-top: 0px;
-  color: #333;
+  color: var(--color-text-primary);
 }
 
 .sampleText {
@@ -63,13 +65,13 @@
   font-size: 0.9rem;
   font-weight: 250;
   letter-spacing: -0.01em;
-  color: #01080c;
+  color: var(--color-text-dark);
   font-family: "Inter", sans-serif;
 }
 
 .highlight {
-  color: #333;
-  background-color: #c3e7fb;
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
 }
 
 @media (max-width: 768px) {
