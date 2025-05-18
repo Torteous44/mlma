@@ -394,7 +394,6 @@
   gap: 20px;
   height: 100%;
   overflow-y: auto;
-
 }
 
 .manualContent {
@@ -452,7 +451,7 @@
 }
 
 .sectionTitle:first-of-type {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .formPlaceholder {
