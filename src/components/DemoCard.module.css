@@ -1,5 +1,7 @@
 @import '../styles.css';
-
+*{
+  font-family: "Inter", sans-serif;
+}
 .demoContainer {
   width: 50%;
   padding: 10vh 0 10vh 10vh;
@@ -26,6 +28,7 @@
   border: none;
   box-sizing: border-box;
   padding: 40px;
+  overflow: hidden;
 }
 
 .demoCard::before {
@@ -45,7 +48,7 @@
 }
 
 .topContent {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -53,16 +56,43 @@
 }
 
 .mainContent {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 380px;
+  padding-top: 0;
+}
+
+.mainContentManual {
+  border-top: 1px solid var(--color-border-dark);
+  border-bottom: 1px solid var(--color-border-dark);
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.mainContentManual::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .bottomContent {
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-
+  height: 24px;
+  margin-top: auto;
+  padding-top: 20px;
 }
 
 .demoTitle {
@@ -88,15 +118,92 @@
   gap: 15px;
 }
 
+.stepIndicator {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.stepDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-text-primary);
+  opacity: 0.3;
+}
+
+.activeDot {
+  opacity: 1;
+  background-color: var(--color-primary);
+  scale: 1.1;
+  transition: all 0.2s ease;
+  border: 0.5px solid var(--color-border-dark);
+}
+
+.stepNavigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 8px;
+}
+
+.navigationChevron {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+  border: 1px solid var(--color-border-dark);
+  padding: 0;
+  box-sizing: border-box;
+  line-height: 0;
+}
+
+.navigationChevron svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.navigationChevron:hover {
+  opacity: 1;
+  background-color: var(--color-primary-light);
+}
+
+.navigationChevron:disabled, 
+.navigationChevron[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.submitChevron {
+  color: black;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-border-dark);
+}
+
+.submitChevron:hover {
+  opacity: 1;
+  background-color: var(--color-focus-shadow);
+}
 
 .guideText {
   font-size: 1rem;
   color: var(--color-text-medium);
   font-weight: 400;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 5px;
   font-family: "Inter", sans-serif;
   letter-spacing: -0.03em;
+  margin-bottom: 0px;
 }
 
 .optionsContainer {
@@ -107,6 +214,7 @@
   max-width: 600px;
   gap: 30px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .optionItem {
@@ -132,9 +240,6 @@
 }
 
 .helpIcon {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -146,15 +251,21 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  z-index: 2;
+  transition: all 0.2s ease;
+  z-index: 10;
   transform: translateZ(0);
   border: 1px solid var(--color-border-dark);
   font-family: "Inter", sans-serif;
+  position: relative;
 }
 
 .helpIcon:hover {
-  rotate: 180deg;
+  transform: rotate(180deg);
+  background-color: var(--color-primary-light);
+}
+
+.xIcon:hover {
+  transform: none;
 }
 
 @media (max-width: 1150px) {
@@ -214,12 +325,49 @@
     bottom: 0px;
     left: 0px;
   }
+
+  .resultContainer {
+    padding-top: 10px;
+    width: 94%;
+    margin: 0 auto;
+    overflow-y: visible;
+    max-height: none;
+  }
+
+  .screenContainer {
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+
+  .mainContent {
+    align-items: flex-start;
+    padding-top: 10px;
+    overflow-y: auto;
+  }
 }
 
 /* Screen container styles */
 .screenContainer {
   width: 100%;
+  height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: visible;
+  max-height: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Center the content for the upload screen specifically */
+.screenContainer .uploadContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0;
 }
 
 /* Upload screen styles */
@@ -228,11 +376,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 30px;
   position: relative;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  margin-top: 20px;
+  margin-top: 0;
+  height: 100%;
 }
 
 /* Manual input screen styles */
@@ -242,6 +392,9 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  height: 100%;
+  overflow-y: auto;
+
 }
 
 .manualContent {
@@ -249,7 +402,57 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.manualContent::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.formScrollContainer {
+  width: 100%;
+  overflow-y: auto;
+  max-height: 100%;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.formScrollContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.navigationButtons {
+  display: none;
+}
+
+.formSection {
+  padding: 10px 0;
+  overflow-y: auto;
+  width: 100%;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.formSection::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  margin-top: 15px;
+  padding-bottom: 4px;
+  display: inline-block;
+  letter-spacing: -0.03em;
+}
+
+.sectionTitle:first-of-type {
+  margin-top: 5px;
 }
 
 .formPlaceholder {
@@ -267,4 +470,358 @@
   .dropZone {
     height: 150px;
   }
-} 
+}
+
+/* Result display styles */
+.resultContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px;
+  max-width: 500px;
+  padding-top: 0;
+  margin-top: 0;
+  overflow-y: visible;
+  max-height: none;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.resultTitle {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-text-darker);
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.approvalBadge {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border-dark);
+}
+
+.approved {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--color-text-darker);
+}
+
+.declined {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--color-text-darker);
+}
+
+.resultItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 22px;
+}
+
+.resultItemLarge {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--color-border-dark);
+  border-radius: 22px;
+}
+
+.resultLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.resultValue {
+  font-size: 1.1rem;
+  color: var(--color-text-darker);
+  font-weight: 500;
+}
+
+.probabilityContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.probabilityBar {
+  flex: 1;
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 
+  0.5px solid var(--color-border-dark);
+}
+
+.probabilityFill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+  border-right: 0.5px solid var(--color-border-dark);
+}
+
+.probabilityValue {
+  font-size: 1.1rem;
+  color: var(--color-text-darker);
+  font-weight: 600;
+  min-width: 50px;
+  text-align: right;
+}
+
+.resultActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Add styles for summary page */
+.summaryCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.summaryContainer {
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--color-background-secondary);
+  overflow: auto;
+  max-height: 350px;
+}
+
+
+.submitButtonContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.summaryTextContent {
+  width: 100%;
+  text-align: left;
+  padding: 10px 0;
+}
+
+.summarySection {
+  margin-bottom: 16px;
+}
+
+.summarySectionTitle {
+  font-size: 1rem;
+  font-weight: 450;
+  color: var(--color-text-darker);
+  margin-bottom: 8px;
+  margin-top: 0;
+  letter-spacing: -0.03em;
+}
+
+.summaryItems {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  letter-spacing: -0.03em;
+}
+
+.summaryLabel {
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.summaryValue {
+  font-size: 0.9rem;
+  color: var(--color-text-darker);
+  font-weight: 400;
+}
+
+.resultActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sampleDocContainer {
+  margin-top: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  padding: 15px 0;
+}
+
+.sampleDocContainer p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.sampleDocContainer button {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px 16px;
+}
+
+.errorMessage {
+  color: #d32f2f;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgba(211, 47, 47, 0.1);
+}
+
+.uploadContentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  padding: 10px 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .uploadContainer {
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  
+  .uploadContentWrapper {
+    padding: 10px 0;
+  }
+  
+  .sampleDocContainer {
+    margin-bottom: 30px;
+    padding: 10px 0;
+  }
+  
+  .sampleDocContainer button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Help content styles */
+.helpContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.helpTitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color-text-darker);
+  margin-bottom: 25px;
+  text-align: left;
+  letter-spacing: -0.03em;
+}
+
+.helpSection {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.helpSectionTitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-bottom: 0px;
+  letter-spacing: -0.03em;
+}
+
+.helpSection p {
+  font-size: 0.85rem;
+  color: var(--color-text-medium);
+  line-height: 1.5;
+  margin-bottom: 5px;
+  letter-spacing: -0.01em;
+}
+
+.helpSection button {
+  margin-top: 5px;
+  font-size: 0.95rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .uploadContainer {
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  
+  .uploadContentWrapper {
+    padding: 10px 0;
+  }
+  
+  .sampleDocContainer {
+    margin-bottom: 30px;
+  }
+
+  .helpContent {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .helpTitle {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  .helpSectionTitle {
+    font-size: 1.1rem;
+  }
+
+  .helpSection {
+    margin-bottom: 20px;
+  }
+
+  .helpSection p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+}
+

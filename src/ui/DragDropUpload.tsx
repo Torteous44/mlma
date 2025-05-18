@@ -16,6 +16,7 @@ interface DragDropUploadProps {
   primaryText?: string;
   secondaryText?: string;
   mobileBreakpoint?: number; // Custom breakpoint for mobile layout
+  isLoading?: boolean; // Loading state indicator
 }
 
 const DragDropUpload: React.FC<DragDropUploadProps> = ({
@@ -25,6 +26,7 @@ const DragDropUpload: React.FC<DragDropUploadProps> = ({
   primaryText = "Upload Document",
   secondaryText = "Drag and drop or click to select",
   mobileBreakpoint = 640, // Default breakpoint when card stacks above text
+  isLoading = false, // Default not loading
 }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -122,30 +124,45 @@ const DragDropUpload: React.FC<DragDropUploadProps> = ({
     setIsDragging(false);
   };
 
+  // Add loading indicator in the component UI
+  const renderLoadingIndicator = () => {
+    if (!isLoading) return null;
+
+    return (
+      <div className={styles.loadingOverlay}>
+        <div className={styles.spinner}></div>
+        <p>Processing document...</p>
+      </div>
+    );
+  };
+
   return (
     <div
       ref={containerRef}
       className={`${styles.container} ${
         isMobileLayout ? styles.mobileContainer : ""
-      }`}
-      onClick={isMobileLayout ? handleClick : undefined}
+      } ${isLoading ? styles.loading : ""}`}
+      onClick={isMobileLayout && !isLoading ? handleClick : undefined}
     >
+      {renderLoadingIndicator()}
+
       <input
         type="file"
         ref={fileInputRef}
         className={styles.fileInput}
         onChange={handleFileSelect}
         accept={acceptedFileTypes}
+        disabled={isLoading}
       />
 
       {/* Only show as separate element on desktop */}
       {!isMobileLayout && (
         <div
           className={`${styles.dropZone} ${isDragging ? styles.dragging : ""}`}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-          onClick={handleClick}
+          onDragOver={!isLoading ? handleDragOver : undefined}
+          onDragLeave={!isLoading ? handleDragLeave : undefined}
+          onDrop={!isLoading ? handleDrop : undefined}
+          onClick={!isLoading ? handleClick : undefined}
           role="button"
           tabIndex={0}
           aria-label="Upload file"
