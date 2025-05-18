@@ -220,7 +220,7 @@ const IncomeForm: React.FC<{
   <div className={styles.formSection}>
     <h3 className={styles.sectionTitle}>Primary Income</h3>
     <NumericInput
-      label="Total pre-tax household income (2019 USD)"
+      label="Total pre-tax household income"
       value={formData.scf_applicant_income_dollars}
       onChange={(value) => onChange("scf_applicant_income_dollars", value)}
       placeholder="e.g. 90000"
