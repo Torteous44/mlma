@@ -8,8 +8,16 @@
   font-size: 0.875rem;
 }
 
+/* Select the div that DemoCard renders, assuming it's the first child */
+.demoCardContainer {
+  /* Styles for the DemoCard wrapper if needed for desktop */
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+  }
+  .demoCardContainer {
+    display: none;
   }
 } 

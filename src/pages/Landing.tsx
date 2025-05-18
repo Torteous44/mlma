@@ -6,7 +6,9 @@ import ScrollableContent from "../components/ScrollableContent";
 const Landing = () => {
   return (
     <div className={styles.container}>
-      <DemoCard />
+      <div className={styles.demoCardContainer}>
+        <DemoCard />
+      </div>
       <ScrollableContent />
     </div>
   );
