@@ -175,8 +175,15 @@ const UploadScreen: React.FC<{
           maxFileSize={5242880} // 5MB
           primaryText="Select File to Upload"
           secondaryText="Drag and drop or click to select an Excel file"
-          isLoading={isLoading}
+          isLoading={false}
         />
+
+        {isLoading && (
+          <div className={styles.minimalLoading}>
+            <div className={styles.minimalSpinner}></div>
+            <span>Processing your document...</span>
+          </div>
+        )}
 
         {error && <div className={styles.errorMessage}>{error}</div>}
       </div>
@@ -524,6 +531,8 @@ const SummaryForm: React.FC<{
   formData: FormData;
   onResult?: (result: ApiResponse) => void;
 }> = ({ formData, onResult }) => {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   // Convert formData to numeric values for API
   const prepareFormDataForAPI = () => {
     const apiData: Record<string, number | string> = {};
@@ -548,6 +557,7 @@ const SummaryForm: React.FC<{
 
   const handleSubmit = async () => {
     try {
+      setIsSubmitting(true);
       const apiData = prepareFormDataForAPI();
       console.log("Submitting form data:", apiData);
 
@@ -579,6 +589,8 @@ const SummaryForm: React.FC<{
           error instanceof Error ? error.message : "Unknown error"
         }`
       );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -927,6 +939,7 @@ const DemoCard: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [apiResult, setApiResult] = useState<ApiResponse | null>(null);
   const [isHelpVisible, setIsHelpVisible] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const mainContentRef = React.useRef<HTMLDivElement>(null);
 
   const pageOrder: FormPage[] = [
@@ -1099,6 +1112,7 @@ const DemoCard: React.FC = () => {
     // Assuming the Summary page is the last page
     if (currentPage === "summary") {
       try {
+        setIsSubmitting(true);
         // Create API data format
         const apiData: Record<string, number | string> = {};
 
@@ -1142,6 +1156,8 @@ const DemoCard: React.FC = () => {
             error instanceof Error ? error.message : "Unknown error"
           }`
         );
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -1231,23 +1247,29 @@ const DemoCard: React.FC = () => {
                   className={`${styles.navigationChevron} ${
                     isLastPage ? styles.submitChevron : ""
                   }`}
-                  onClick={isLastPage ? handleSubmit : handleNext}
+                  onClick={
+                    isLastPage && !isSubmitting ? handleSubmit : handleNext
+                  }
                 >
                   {isLastPage ? (
-                    <svg
-                      fill="#000000"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 256.00 256.00"
-                      xmlns="http://www.w3.org/2000/svg"
-                      stroke="#000000"
-                      strokeWidth="7.68"
-                      style={{ display: "block" }}
-                    >
-                      <g id="SVGRepo_iconCarrier">
-                        <path d="M103.99951,188.00012a3.98852,3.98852,0,0,1-2.82812-1.17139l-56-55.9956a3.99992,3.99992,0,0,1,5.65625-5.65723l53.17187,53.16748L213.17139,69.1759a3.99992,3.99992,0,0,1,5.65625,5.65723l-112,111.9956A3.98855,3.98855,0,0,1,103.99951,188.00012Z"></path>
-                      </g>
-                    </svg>
+                    isSubmitting ? (
+                      <div className={styles.minimalSubmitSpinner}></div>
+                    ) : (
+                      <svg
+                        fill="#000000"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 256.00 256.00"
+                        xmlns="http://www.w3.org/2000/svg"
+                        stroke="#000000"
+                        strokeWidth="7.68"
+                        style={{ display: "block" }}
+                      >
+                        <g id="SVGRepo_iconCarrier">
+                          <path d="M103.99951,188.00012a3.98852,3.98852,0,0,1-2.82812-1.17139l-56-55.9956a3.99992,3.99992,0,0,1,5.65625-5.65723l53.17187,53.16748L213.17139,69.1759a3.99992,3.99992,0,0,1,5.65625,5.65723l-112,111.9956A3.98855,3.98855,0,0,1,103.99951,188.00012Z"></path>
+                        </g>
+                      </svg>
+                    )
                   ) : (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
