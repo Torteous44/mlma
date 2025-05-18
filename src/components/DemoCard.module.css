@@ -251,21 +251,26 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
   z-index: 10;
   transform: translateZ(0);
   border: 1px solid var(--color-border-dark);
   font-family: "Inter", sans-serif;
   position: relative;
+  transition: all 0.2s ease;
 }
 
 .helpIcon:hover {
   transform: rotate(180deg);
-  background-color: var(--color-primary-light);
+  /* background-color: var(--color-primary-light); */
 }
 
 .xIcon:hover {
-  transform: none;
+  transform: rotate(180deg);
+}
+
+.helpCloseIcon {
+  display: block;
+  /* Add any specific styling for the SVG icon if necessary */
 }
 
 @media (max-width: 1150px) {
@@ -775,10 +780,11 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 20px 0px;
   overflow-y: auto;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .helpTitle {
@@ -793,27 +799,33 @@
 .helpSection {
   margin-bottom: 0px;
   width: 100%;
+  padding: 15px 0;
+}
+
+.helpSection:not(:last-child) {
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .helpSectionTitle {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--color-text-primary);
-  margin-bottom: 0px;
-  letter-spacing: -0.03em;
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: var(--color-text-darker);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
 }
 
 .helpSection p {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--color-text-medium);
-  line-height: 1.5;
-  margin-bottom: 5px;
+  line-height: 1.6;
+  margin-bottom: 12px;
   letter-spacing: -0.01em;
 }
 
 .helpSection button {
   margin-top: 5px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  padding: 8px 14px;
 }
 
 /* Mobile adjustments */
@@ -832,7 +844,7 @@
   }
 
   .helpContent {
-    padding: 10px;
+    padding: 15px 5px;
     max-width: 100%;
   }
 
@@ -850,7 +862,7 @@
   }
 
   .helpSection p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     margin-bottom: 10px;
   }
 }

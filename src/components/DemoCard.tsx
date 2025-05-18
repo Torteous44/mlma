@@ -897,34 +897,30 @@ const HelpContent: React.FC = () => {
   return (
     <div className={styles.helpContent}>
       <div className={styles.helpSection}>
-        <h4 className={styles.helpSectionTitle}>Option 1: Upload a Document</h4>
+        <h4 className={styles.helpSectionTitle}>Option 1: Upload Document</h4>
         <p>
-          Upload an Excel document containing your financial information. The
-          system will automatically extract the relevant data and pre-fill your
-          application.
+          Use an Excel document with your financial information. The system will
+          extract the data to pre-fill your application.
         </p>
       </div>
 
       <div className={styles.helpSection}>
         <h4 className={styles.helpSectionTitle}>Option 2: Manual Entry</h4>
         <p>
-          Complete each section of the form manually by entering your income,
-          assets, debt, and other financial details. You can navigate between
-          sections using the buttons at the bottom.
+          Enter your income, assets, debt, and other financial details manually
+          across each section of the form.
         </p>
       </div>
 
       <div className={styles.helpSection}>
         <h4 className={styles.helpSectionTitle}>Sample Document</h4>
-        <p>
-          Download our template to see the expected format for document uploads:
-        </p>
+        <p>Download our template to see the expected format for uploads:</p>
         <Button
           variant="secondary"
           size="medium"
           onClick={downloadSampleDocument}
         >
-          Download Sample Document
+          Download Sample
         </Button>
       </div>
     </div>
@@ -1201,7 +1197,20 @@ const DemoCard: React.FC = () => {
             }`}
             onClick={toggleHelp}
           >
-            {isHelpVisible ? "×" : "?"}
+            {isHelpVisible ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                className={styles.helpCloseIcon}
+              >
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+              </svg>
+            ) : (
+              "?"
+            )}
           </div>
           {currentScreen === "manual" && !isHelpVisible && (
             <div className={styles.stepIndicator}>
