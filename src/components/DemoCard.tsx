@@ -428,6 +428,8 @@ const HmdaForm: React.FC<{
       options={[
         { value: "1", label: "First lien" },
         { value: "2", label: "Subordinate lien" },
+        { value: "3", label: "No lien" },
+        { value: "4", label: "Other" },
       ]}
     />
     <DropdownSelect
@@ -554,13 +556,11 @@ const SummaryForm: React.FC<{
 
     return apiData;
   };
-
+  console.log("Form data:", formData);
   const handleSubmit = async () => {
     try {
       setIsSubmitting(true);
       const apiData = prepareFormDataForAPI();
-      console.log("Submitting form data:", apiData);
-
       const response = await fetch(
         "https://mortgagesfinal.onrender.com/predict",
         {
@@ -1126,7 +1126,6 @@ const DemoCard: React.FC = () => {
             apiData[key] = value;
           }
         });
-
         const response = await fetch(
           "https://mortgagesfinal.onrender.com/predict",
           {
