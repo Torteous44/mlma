@@ -149,18 +149,18 @@ const UploadScreen: React.FC<{
     }
   };
 
-  const handleLoadSample = async () => {
+  const handleLoadSample = async (type: "approved" | "denied") => {
     try {
       setIsLoading(true);
       setError(null);
 
-      const formData = await loadSampleDocument();
-      console.log("Loaded sample document:", formData);
+      const formData = loadSampleProfile(type);
+      console.log("Loaded sample profile:", formData);
 
       onDataLoaded(formData);
     } catch (err) {
-      console.error("Error loading sample document:", err);
-      setError("Failed to load the sample document.");
+      console.error("Error loading sample profile:", err);
+      setError("Failed to load the sample profile.");
     } finally {
       setIsLoading(false);
     }
@@ -189,14 +189,26 @@ const UploadScreen: React.FC<{
       </div>
 
       <div className={styles.sampleDocContainer}>
-        <p>Don't have a document? Use our sample:</p>
-        <Button
-          variant="secondary"
-          onClick={handleLoadSample}
-          disabled={isLoading}
-        >
-          Load Sample Document
-        </Button>
+        <p>
+          Try our sample profiles to see how different financial situations
+          affect mortgage approval:
+        </p>
+        <div className={styles.sampleButtons}>
+          <Button
+            variant="secondary"
+            onClick={() => handleLoadSample("approved")}
+            disabled={isLoading}
+          >
+            Load Approved Profile
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => handleLoadSample("denied")}
+            disabled={isLoading}
+          >
+            Load Denied Profile
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -913,18 +925,109 @@ const HelpContent: React.FC = () => {
       </div>
 
       <div className={styles.helpSection}>
-        <h4 className={styles.helpSectionTitle}>Sample Document</h4>
-        <p>Download our template to see the expected format for uploads:</p>
-        <Button
-          variant="secondary"
-          size="medium"
-          onClick={downloadSampleDocument}
-        >
-          Download Sample
-        </Button>
+        <h4 className={styles.helpSectionTitle}>Sample Profiles</h4>
+        <p>
+          Try our sample profiles to see how different financial situations
+          affect mortgage approval:
+        </p>
+        <div className={styles.sampleButtons}>
+          <Button
+            variant="secondary"
+            size="medium"
+            onClick={() => loadSampleProfile("approved")}
+          >
+            Load Approved Profile
+          </Button>
+          <Button
+            variant="secondary"
+            size="medium"
+            onClick={() => loadSampleProfile("denied")}
+          >
+            Load Denied Profile
+          </Button>
+        </div>
       </div>
     </div>
   );
+};
+
+// Sample profiles
+const sampleProfiles = {
+  approved: {
+    // Income Components
+    scf_applicant_income_dollars: 180000,
+    scf_WAGEINC: 150000,
+    scf_BUSSEFARMINC: 20000,
+    scf_KGINC: 10000,
+    scf_SSRETINC: 0,
+    // Asset Holdings
+    scf_STOCKS: 100000,
+    scf_BOND: 50000,
+    scf_FIN: 200000,
+    scf_ASSET: 750000,
+    // Debt & Payment Obligations
+    scf_DEBT: 1000,
+    scf_PAYVEH_total: 300,
+    scf_PAYEDU_total: 0,
+    scf_LATE: false,
+    // Liquid Asset Balances
+    scf_CHECKING: 30000,
+    scf_SAVING: 75000,
+    scf_MMA: 25000,
+    scf_CALL: 15000,
+    scf_HLIQ: true,
+    // Demographics & Risk Indicators
+    scf_KIDS: 0,
+    scf_MARRIED: true,
+    scf_LF: true,
+    scf_BNKRUPLAST5: false,
+    scf_FORECLLAST5: false,
+    // HMDA Application Details
+    hmda_loan_purpose: "1", // Purchase
+    hmda_lien_status: "4", // First lien
+    hmda_property_type: "1", // Principal residence
+    hmda_preapproval: "1", // Requested
+  },
+  denied: {
+    // Income Components
+    scf_applicant_income_dollars: 45000,
+    scf_WAGEINC: 40000,
+    scf_BUSSEFARMINC: 5000,
+    scf_KGINC: 0,
+    scf_SSRETINC: 0,
+    // Asset Holdings
+    scf_STOCKS: 0,
+    scf_BOND: 0,
+    scf_FIN: 5000,
+    scf_ASSET: 50000,
+    // Debt & Payment Obligations
+    scf_DEBT: 35000,
+    scf_PAYVEH_total: 400,
+    scf_PAYEDU_total: 200,
+    scf_LATE: true,
+    // Liquid Asset Balances
+    scf_CHECKING: 2000,
+    scf_SAVING: 3000,
+    scf_MMA: 0,
+    scf_CALL: 0,
+    scf_HLIQ: false,
+    // Demographics & Risk Indicators
+    scf_KIDS: 2,
+    scf_MARRIED: false,
+    scf_LF: true,
+    scf_BNKRUPLAST5: true,
+    scf_FORECLLAST5: false,
+    // HMDA Application Details
+    hmda_loan_purpose: "1", // Purchase
+    hmda_lien_status: "1", // First lien
+    hmda_property_type: "1", // Principal residence
+    hmda_preapproval: "2", // Not requested
+  },
+};
+
+// Function to load sample profile
+const loadSampleProfile = (type: "approved" | "denied") => {
+  return sampleProfiles[type];
 };
 
 const DemoCard: React.FC = () => {
