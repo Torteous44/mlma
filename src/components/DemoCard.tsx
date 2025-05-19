@@ -947,6 +947,20 @@ const HelpContent: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      <div className={styles.helpSection}>
+        <h4 className={styles.helpSectionTitle}>Document Template</h4>
+        <p>
+          Download our Excel template to prepare your financial data for upload:
+        </p>
+        <Button
+          variant="secondary"
+          size="medium"
+          onClick={downloadSampleDocument}
+        >
+          Download Template
+        </Button>
+      </div>
     </div>
   );
 };
