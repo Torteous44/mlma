@@ -12,15 +12,28 @@ import {
 
 // API Response interface
 interface ApiResponse {
-  prediction: number;
-  range_low: number;
-  range_high: number;
-  approved: boolean;
-  approval_probability: number;
+  prediction?: number;
+  range_low?: number;
+  range_high?: number;
+  approved?: boolean;
+  approval_probability?: number;
   explanation?: Array<{
     feature: string;
     shap_value: number;
   }>;
+  summary?: string;
+  // Add the nested result structure
+  result?: {
+    prediction: number;
+    range_low: number;
+    range_high: number;
+    approved: boolean;
+    approval_probability: number;
+    explanation: Array<{
+      feature: string;
+      shap_value: number;
+    }>;
+  };
 }
 
 // Form state interface
@@ -487,39 +500,40 @@ const ResultDisplay: React.FC<{ result: ApiResponse }> = ({ result }) => {
     }).format(amount);
   };
 
-  const approvalPercentage = Math.round(
-    (result.approval_probability || 0) * 100
-  );
+  // Handle the new format by accessing properties correctly
+  // If result.result exists, use those values, otherwise use the direct properties
+  const data = result.result || result;
+
+  const approvalPercentage = Math.round((data.approval_probability || 0) * 100);
 
   return (
     <div className={styles.resultContainer}>
-      <div style={{ height: "15px" }}></div>
       <div className={styles.resultHeader}>
         <h3 className={styles.resultTitle}>
-          Mortgage Assessment {result.approved ? "Approved" : "Declined"}
+          Mortgage Assessment {data.approved ? "Approved" : "Declined"}
         </h3>
         <div
           className={`${styles.approvalBadge} ${
-            result.approved ? styles.approved : styles.declined
+            data.approved ? styles.approved : styles.declined
           }`}
         >
-          {result.approved ? "Approved" : "Declined"}
+          {data.approved ? "Approved" : "Declined"}
         </div>
       </div>
 
       <div className={styles.resultItem}>
         <span className={styles.resultLabel}>Recommended Loan Amount:</span>
         <span className={styles.resultValue}>
-          {formatCurrency(result.prediction)}
+          {formatCurrency(data.prediction)}
         </span>
       </div>
 
       <div className={styles.resultItem}>
         <span className={styles.resultLabel}>Loan Range:</span>
         <span className={styles.resultValue}>
-          {result.approved
-            ? `${formatCurrency(result.range_low)} to ${formatCurrency(
-                result.range_high
+          {data.approved
+            ? `${formatCurrency(data.range_low)} to ${formatCurrency(
+                data.range_high
               )}`
             : "Not Available"}
         </span>
@@ -537,6 +551,13 @@ const ResultDisplay: React.FC<{ result: ApiResponse }> = ({ result }) => {
           <span className={styles.probabilityValue}>{approvalPercentage}%</span>
         </div>
       </div>
+
+      {result.summary && (
+        <div className={styles.resultSummary}>
+          <h4 className={styles.summaryTitle}>Assessment Summary</h4>
+          <p className={styles.summaryText}>{result.summary}</p>
+        </div>
+      )}
     </div>
   );
 };
